@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 
     if (argc != 3) {
         syslog(LOG_ERR, "Invalid number arguments: expected 2, got %d", argc - 1);
-        fprintf(stderr, "Usege: %s <file> <string>\n", argv[0]);
+        fprintf(stderr, "Usage: %s <file> <string>\n", argv[0]);
         closelog();
         return 1;
     }
