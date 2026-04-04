@@ -1,5 +1,14 @@
 #include "systemcalls.h"
 
+#include <errno.h>
+#include <fcntl.h>
+#include <stdarg.h>
+#include <stddef.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+
 /**
  * @param cmd the command to execute with system()
  * @return true if the command in @param cmd was executed
@@ -17,7 +26,28 @@ bool do_system(const char *cmd)
  *   or false() if it returned a failure
 */
 
-    return true;
+    bool is_successful;
+    int system_status;
+
+    is_successful = false;
+
+    if (NULL != cmd)
+    {
+        system_status = system(cmd);
+
+        if (-1 != system_status)
+        {
+            if (true == WIFEXITED(system_status))
+            {
+                if (0 == WEXITSTATUS(system_status))
+                {
+                    is_successful = true;
+                }
+            }
+        }
+    }
+
+    return is_successful;
 }
 
 /**
@@ -49,6 +79,7 @@ bool do_exec(int count, ...)
     // and may be removed
     command[count] = command[count];
 
+
 /*
  * TODO:
  *   Execute a system command by calling fork, execv(),
@@ -59,9 +90,47 @@ bool do_exec(int count, ...)
  *
 */
 
+    pid_t pid;
+    pid_t waited_pid;
+    int wait_status;
+    bool is_successful = false;
+
+
+    if ((0 < count) && (NULL != command[0]))
+    {
+        fflush(stdout);
+
+        pid = fork();
+
+        if (0 == pid)
+        {
+            (void)execv(command[0], command);
+            exit(EXIT_FAILURE);
+        }
+        else if (0 < pid)
+        {
+            waited_pid = waitpid(pid, &wait_status, 0);
+
+            if (pid == waited_pid)
+            {
+                if (true == WIFEXITED(wait_status))
+                {
+                    if (0 == WEXITSTATUS(wait_status))
+                    {
+                        is_successful = true;
+                    }
+                }
+            }
+        }
+        else
+        {
+            /* fork() failed */
+        }
+    }
+
     va_end(args);
 
-    return true;
+    return is_successful;
 }
 
 /**
@@ -95,5 +164,57 @@ bool do_exec_redirect(const char *outputfile, int count, ...)
 
     va_end(args);
 
-    return true;
+    pid_t pid;
+    pid_t waited_pid;
+    int wait_status;
+    int output_fd;
+    bool is_successful = false;
+    
+    if ((NULL != outputfile) && (0 < count) && (NULL != command[0]))
+    {
+        fflush(stdout);
+
+        pid = fork();
+
+        if (0 == pid)
+        {
+            output_fd = open(outputfile, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+
+            if (-1 != output_fd)
+            {
+                if (-1 != dup2(output_fd, STDOUT_FILENO))
+                {
+                    (void)close(output_fd);
+                    (void)execv(command[0], command);
+                }
+                else
+                {
+                    (void)close(output_fd);
+                }
+            }
+
+            exit(EXIT_FAILURE);
+        }
+        else if (0 < pid)
+        {
+            waited_pid = waitpid(pid, &wait_status, 0);
+
+            if (pid == waited_pid)
+            {
+                if (true == WIFEXITED(wait_status))
+                {
+                    if (0 == WEXITSTATUS(wait_status))
+                    {
+                        is_successful = true;
+                    }
+                }
+            }
+        }
+        else
+        {
+            /* fork() failed */
+        }
+    }
+
+    return is_successful;
 }
