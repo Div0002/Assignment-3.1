@@ -122,7 +122,7 @@ EOF
 chmod +x "${OUTDIR}/rootfs/init"
 
 make -C "${FINDER_APP_DIR}" clean
-make -C "${FINDER_APP_DIR}" CROSS_COMPILE="${CROSS_COMPILE}" LDFLAGS="-static"
+${CROSS_COMPILE}gcc -static -Wall -Werror -o "${FINDER_APP_DIR}/writer" "${FINDER_APP_DIR}/writer.c"
 
 cp "${FINDER_APP_DIR}/writer" "${OUTDIR}/rootfs/home/"
 cp "${FINDER_APP_DIR}/finder.sh" "${OUTDIR}/rootfs/home/"
