@@ -8,6 +8,7 @@ set -u
 OUTDIR=/tmp/aeld
 KERNEL_REPO=https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
 KERNEL_VERSION=v5.15.163
+KERNEL_TARBALL=https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.15.163.tar.xz
 BUSYBOX_VERSION=1_33_1
 FINDER_APP_DIR=$(realpath "$(dirname "$0")")
 ARCH=arm64
@@ -26,14 +27,15 @@ mkdir -p "${OUTDIR}"
 
 cd "${OUTDIR}"
 if [ ! -d "${OUTDIR}/linux-stable" ]; then
-    echo "CLONING GIT LINUX STABLE VERSION ${KERNEL_VERSION} IN ${OUTDIR}"
-    git clone "${KERNEL_REPO}" --depth 1 --single-branch --branch "${KERNEL_VERSION}"
+    echo "DOWNLOADING AND EXTRACTING LINUX STABLE VERSION ${KERNEL_VERSION} IN ${OUTDIR}"
+    wget -O linux.tar.xz "${KERNEL_TARBALL}"
+    tar -xf linux.tar.xz
+    mv "linux-5.15.163" linux-stable
 fi
 
 if [ ! -e "${OUTDIR}/linux-stable/arch/${ARCH}/boot/Image" ]; then
     cd linux-stable
-    echo "Checking out version ${KERNEL_VERSION}"
-    git checkout "${KERNEL_VERSION}"
+    echo "Preparing kernel version ${KERNEL_VERSION}"
 
     make ARCH="${ARCH}" CROSS_COMPILE="${CROSS_COMPILE}" mrproper
     make ARCH="${ARCH}" CROSS_COMPILE="${CROSS_COMPILE}" defconfig
