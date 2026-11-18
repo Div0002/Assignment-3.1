@@ -1,0 +1,366 @@
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x411fd070]
+[    0.000000] Linux version 6.18.54-yocto-standard (oe-user@oe-host) (aarch64-poky-linux-gcc (GCC) 15.3.0, GNU ld (GNU Binutils) 2.46.1.20260718) #1 SMP PREEMPT Mon Sep 28 17:58:49 UTC 2026
+[    0.000000] random: crng init done
+[    0.000000] Machine model: linux,dummy-virt
+[    0.000000] Memory limited to 256MB
+[    0.000000] efi: UEFI not found.
+[    0.000000] OF: reserved mem: Reserved memory: No reserved-memory node in the DT
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000040000000-0x000000004fffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000040000000-0x000000004fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000040000000-0x000000004fffffff]
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.0
+[    0.000000] percpu: Embedded 28 pages/cpu s76440 r8192 d30056 u114688
+[    0.000000] pcpu-alloc: s76440 r8192 d30056 u114688 alloc=28*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 
+[    0.000000] Detected PIPT I-cache on CPU0
+[    0.000000] CPU features: detected: Spectre-v2
+[    0.000000] CPU features: detected: Spectre-v4
+[    0.000000] CPU features: detected: Spectre-BHB
+[    0.000000] CPU features: detected: ARM erratum 1742098
+[    0.000000] CPU features: detected: ARM erratum 832075
+[    0.000000] CPU features: detected: ARM errata 1165522, 1319367, or 1530923
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: root=/dev/vda rw  mem=256M ip=192.168.7.2::192.168.7.1:255.255.255.0::eth0:off:8.8.8.8 net.ifnames=0 console=ttyAMA0 console=hvc0 swiotlb=0 
+[    0.000000] printk: log buffer data + meta data: 131072 + 458752 = 589824 bytes
+[    0.000000] Dentry cache hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.000000] software IO TLB: area num 4.
+[    0.000000] software IO TLB: SWIOTLB bounce buffer size roundup to 1MB
+[    0.000000] software IO TLB: mapped [mem 0x000000004f700000-0x000000004f800000] (1MB)
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 65536
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:off, heap free:off
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[    0.000000] ftrace: allocating 44662 entries in 176 pages
+[    0.000000] ftrace: allocated 176 pages with 3 groups
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.00000assignment7-faulty-oops.log                   100%   21KB   1.8MB/s   00:00    
+[?2004h]0;pc@pc: ~/assignment-6[01;32mpc@pc[00m:[01;34m~/assignment-6[00m$ [7mls -lh ~/assignment7-faulty-oops.log[27m
+
+[7mgrep -E 'NULL pointer|Oops|faulty_write|Call trace' \[27m
+[7m    ~/assignment7-faulty-oops.log[27m[A[A[Als -lh ~/assignment7-faulty-oops.log
+
+grep -E 'NULL pointer|Oops|faulty_write|Call trace' \
+    ~/assignment7-faulty-oops.log
+[?2004l-rw-rw-r-- 1 pc pc 22K Nov 18 17:43 /home/pc/assignment7-faulty-oops.log
+[7mgrep -E '[01;31m[KNULL pointer[m[K|[01;31m[KOops[m[K|[01;31m[Kfaulty_write[m[K|[01;31m[KCall trace[m[K' \[27m
+grep -E '[01;31m[KNULL pointer[m[K|[01;31m[KOops[m[K|[01;31m[Kfaulty_write[m[K|[01;31m[KCall trace[m[K' \
+[  653.973516] Unable to handle kernel [01;31m[KNULL pointer[m[K dereference at virtual address 0000000000000000
+[  653.974600] Internal error: [01;31m[KOops[m[K: 0000000096000044 [#1]  SMP
+[  653.981748] pc : [01;31m[Kfaulty_write[m[K+0xc/0x20 [faulty]
+[  653.987752] [01;31m[KCall trace[m[K:
+[  653.988215]  [01;31m[Kfaulty_write[m[K+0xc/0x20 [faulty] (P)
+[?2004h]0;pc@pc: ~/assignment-6[01;32mpc@pc[00m:[01;34m~/assignment-6[00m$ [7mecho "=== Assignment 3 repositories ==="[27m
+
+[7mfind ~ -maxdepth 3 -type d \[27m
+[7m    \( -name 'assignment-3' -o -name 'assignment-3-*' \) \[27m
+[7m    -print[27m[A[A[A[A]0;pc@pc: ~/assignment-6[01;32mpc@pc[00m:[01;34m~/assignment-6[00m$ echo "=== Assignment 3 repositories ==="
+
+find ~ -maxdepth 3 -type d \
+    \( -name 'assignment-3' -o -name 'assignment-3-*' \) \
+    -print
+[?2004l=== Assignment 3 repositories ===
+[?2004h]0;pc@pc: ~/assignment-6[01;32mpc@pc[00m:[01;34m~/assignment-6[00m$ [7mgit ls-remote git@github.com:Div0002/assignment-3.git HEAD[27m [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgit ls-remote git@github.com:Div0002/assignment-3.git HEAD [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[KD
+[?2004lERROR: Repository not found.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[?2004h]0;pc@pc: ~/assignment-6[01;32mpc@pc[00m:[01;34m~/assignment-6[00m$ D[K[7mecho "=== Existing assignment repositories ==="[27m
+
+[7mfind ~/ -maxdepth 4 -type d -name .git \[27m
+[7m    -printf '%h\n' 2>/dev/null | grep -i assignment[27m[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cecho "=== Existing assignment repositories ==="
+
+find ~/ -maxdepth 4 -type d -name .git \
+    -printf '%h\n' 2>/dev/null | grep -i assignment
+[?2004l=== Existing assignment repositories ===
+/home/pc/[01;31m[KAssignment[m[K-3.1
+/home/pc/[01;31m[Kassignment[m[K-4-buildroot
+/home/pc/[01;31m[Kassignment[m[K-2-Div0002
+/home/pc/[01;31m[Kassignment[m[K-7
+/home/pc/[01;31m[Kassignment[m[K-4-Div0002
+/home/pc/[01;31m[Kassignment[m[K-1-Div0002-1
+/home/pc/[01;31m[Kassignment[m[K-6
+[?2004h]0;pc@pc: ~/assignment-6[01;32mpc@pc[00m:[01;34m~/assignment-6[00m$ [7mgh repo list Div0002 --limit 100 \[27m
+[7m    --json name --jq '.[].name'[27m[Agh repo list Div0002 --limit 100 \
+    --json name --jq '.[].name'
+[?2004lCommand 'gh' not found, but can be installed with:
+sudo snap install gh  # version 2.86.0-112-gc30647b78, or
+sudo apt  install gh  # version 2.45.0-1ubuntu0.3
+See 'snap info gh' for additional versions.
+[?2004h]0;pc@pc: ~/assignment-6[01;32mpc@pc[00m:[01;34m~/assignment-6[00m$ [7mcd ~/Assignment-3.1[27m
+
+[7mecho "=== Git repository ==="[27m
+[7mgit remote -v[27m
+
+[7mecho "=== Current branch ==="[27m
+[7mgit branch --show-current[27m
+
+[7mecho "=== Working tree status ==="[27m
+[7mgit status --short[27m
+
+[7mecho "=== Existing files ==="[27m
+[7mls -la | head -25[27m[A[A[A[A[A[A[A[A[A[A[A[A]0;pc@pc: ~/assignment-6[01;32mpc@pc[00m:[01;34m~/assignment-6[00m$ cd ~/Assignment-3.1
+
+echo "=== Git repository ==="
+git remote -v
+
+echo "=== Current branch ==="
+git branch --show-current
+
+echo "=== Working tree status ==="
+git status --short
+
+echo "=== Existing files ==="
+ls -la | head -25
+[?2004l=== Git repository ===
+assignments-base	https://github.com/cu-ecen-aeld/aesd-assignments.git (fetch)
+assignments-base	https://github.com/cu-ecen-aeld/aesd-assignments.git (push)
+origin	https://github.com/Div0002/Assignment-3.1.git (fetch)
+origin	https://github.com/Div0002/Assignment-3.1.git (push)
+=== Current branch ===
+master
+=== Working tree status ===
+=== Existing files ===
+total 68
+drwxrwxr-x  9 pc pc 4096 Apr  4  2026 .
+drwxr-x--- 56 pc pc 4096 Nov 18 17:37 ..
+drwxrwxr-x  7 pc pc 4096 Apr  4  2026 assignment-autotest
+-rw-rw-r--  1 pc pc  650 Apr  4  2026 CMakeLists.txt
+drwxrwxr-x  2 pc pc 4096 Apr  4  2026 conf
+drwxrwxr-x  3 pc pc 4096 Apr  4  2026 examples
+drwxrwxr-x  2 pc pc 4096 Apr  4  2026 finder-app
+-rwxrwxr-x  1 pc pc 1749 Apr  4  2026 full-test.sh
+drwxrwxr-x  9 pc pc 4096 Nov 18 18:32 .git
+drwxrwxr-x  3 pc pc 4096 Apr  4  2026 .github
+-rw-rw-r--  1 pc pc   79 Apr  4  2026 .gitignore
+-rw-rw-r--  1 pc pc  700 Apr  4  2026 .gitlab-ci.yml
+-rw-rw-r--  1 pc pc  125 Apr  4  2026 .gitmodules
+-rw-rw-r--  1 pc pc 1083 Apr  4  2026 LICENSE
+-rw-rw-r--  1 pc pc 1834 Apr  4  2026 README.md
+drwxrwxr-x  3 pc pc 4096 Apr  4  2026 student-test
+-rwxrwxr-x  1 pc pc  305 Apr  4  2026 unit-test.sh
+[?2004h]0;pc@pc: ~/Assignment-3.1[01;32mpc@pc[00m:[01;34m~/Assignment-3.1[00m$ [7mcd ~/Assignment-3.1[27m
+
+[7m# Create a directory for Assignment 7 evidence[27m
+[7mmkdir -p assignment7-evidence[27m
+
+[7m# Copy the captured kernel log[27m
+[7mcp ~/assignment7-faulty-oops.log \[27m
+[7m   assignment7-evidence/faulty-kernel-oops.log[27m
+
+[7m# Verify the evidence[27m
+[7mgrep -E 'NULL pointer|Oops|faulty_write|Call trace' \[27m
+[7m    assignment7-evidence/faulty-kernel-oops.log[27m
+
+[7m# Stage and commit[27m
+[7mgit add assignment7-evidence/faulty-kernel-oops.log[27m
+
+[7mgit commit -m "Add Assignment 7 faulty driver kernel oops evidence"[27m[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ccd ~/Assignment-3.1
+
+# Create a directory for Assignment 7 evidence
+mkdir -p assignment7-evidence
+
+# Copy the captured kernel log
+cp ~/assignment7-faulty-oops.log \
+   assignment7-evidence/faulty-kernel-oops.log
+
+# Verify the evidence
+grep -E 'NULL pointer|Oops|faulty_write|Call trace' \
+    assignment7-evidence/faulty-kernel-oops.log
+
+# Stage and commit
+git add assignment7-evidence/faulty-kernel-oops.log
+
+git commit -m "Add Assignment 7 faulty driver kernel oops evidence"
+[?2004l50)
+[    1.752914] io scheduler mq-deadline registered
+[    1.753054] io scheduler kyber registered
+[    1.759743] pci-host-generic 4010000000.pcie: host bridge /pcie@10000000 ranges:
+[    1.761537] pci-host-generic 4010000000.pcie:       IO 0x003eff0000..0x003effffff -> 0x0000000000
+[    1.762519] pci-host-generic 4010000000.pcie:      MEM 0x0010000000..0x003efeffff -> 0x0010000000
+[    1.762653] pci-host-generic 4010000000.pcie:      MEM 0x8000000000..0xffffffffff -> 0x8000000000
+[    1.763598] pci-host-generic 4010000000.pcie: Memory resource size exceeds max for 32 bits
+[    1.766064] pci-host-generic 4010000000.pcie: ECAM at [mem 0x4010000000-0x401fffffff] for [bus 00-ff]
+[    1.769380] pci-host-generic 4010000000.pcie: PCI host bridge to bus 0000:00
+[    1.769759] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    1.769864] pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
+[    1.769942] pci_bus 0000:00: root bus resource [mem 0x10000000-0x3efeffff]
+[    1.769960] pci_bus 0000:00: root bus resource [mem 0x8000000000-0xffffffffff]
+[    1.772821] pci 0000:00:00.0: [1b36:0008] type 00 class 0x060000 conventional PCI endpoint
+[    1.781408] pci 0000:00:01.0: [1af4:1000] type 00 class 0x020000 conventional PCI endpoint
+[    1.781897] pci 0000:00:01.0: BAR 0 [io  0x0000-0x001f]
+[    1.782061] pci 0000:00:01.0: BAR 1 [mem 0x00000000-0x00000fff]
+[    1.782148] pci 0000:00:01.0: BAR 4 [mem 0x00000000-0x00003fff 64bit pref]
+[    1.782344] pci 0000:00:01.0: ROM [mem 0x00000000-0x0003ffff pref]
+[    1.783460] pci 0000:00:02.0: [1af4:1005] type 00 class 0x00ff00 conventional PCI endpoint
+[    1.783584] pci 0000:00:02.0: BAR 0 [io  0x0000-0x001f]
+[    1.783616] pci 0000:00:02.0: BAR 1 [mem 0x00000000-0x00000fff]
+[    1.783641] pci 0000:00:02.0: BAR 4 [mem 0x00000000-0x00003fff 64bit pref]
+[    1.785116] pci 0000:00:03.0: [1af4:1001] type 00 class 0x010000 conventional PCI endpoint
+[    1.785701] pci 0000:00:03.0: BAR 0 [io  0x0000-0x007f]
+[    1.785766] pci 0000:00:03.0: BAR 1 [mem 0x00000000-0x00000fff]
+[    1.786008] pci 0000:00:03.0: BAR 4 [mem 0x00000000-0x00003fff 64bit pref]
+[    1.788067] pci 0000:00:04.0: [1b36:000d] type 00 class 0x0c0330 PCIe Root Complex Integrated Endpoint
+[    1.788778] pci 0000:00:04.0: BAR 0 [mem 0x00000000-0x00003fff 64bit]
+[    1.789450] pci 0000:00:04.0: enabling Extended Tags
+[    1.791216] pci 0000:00:05.0: [1af4:1050] type 00 class 0x038000 conventional PCI endpoint
+[    1.791331] pci 0000:00:05.0: BAR 1 [mem 0x00000000-0x00000fff]
+[    1.791363] pci 0000:00:05.0: BAR 4 [mem 0x00000000-0x00003fff 64bit pref]
+[    1.796381] pci 0000:00:01.0: ROM [mem 0x10000000-0x1003ffff pref]: assigned
+[    1.796866] pci 0000:00:01.0: BAR 4 [mem 0x8000000000-0x8000003fff 64bit pref]: assigned
+[    1.797269] pci 0000:00:02.0: BAR 4 [mem 0x8000004000-0x8000007fff 64bit pref]: assigned
+[    1.797412] pci 0000:00:03.0: BAR 4 [mem 0x8000008000-0x800000bfff 64bit pref]: assigned
+[    1.797471] pci 0000:00:04.0: BAR 0 [mem 0x800000c000-0x800000ffff 64bit]: assigned
+[    1.797513] pci 0000:00:05.0: BAR 4 [mem 0x8000010000-0x8000013fff 64bit pref]: assigned
+[    1.797556] pci 0000:00:01.0: BAR 1 [mem 0x10040000-0x10040fff]: assigned
+[    1.797587] pci 0000:00:02.0: BAR 1 [mem 0x10041000-0x10041fff]: assigned
+[    1.797613] pci 0000:00:03.0: BAR 1 [mem 0x10042000-0x10042fff]: assigned
+[    1.797637] pci 0000:00:05.0: BAR 1 [mem 0x10043000-0x10043fff]: assigned
+[    1.797689] pci 0000:00:03.0: BAR 0 [io  0x1000-0x107f]: assigned
+[    1.797762] pci 0000:00:01.0: BAR 0 [io  0x1080-0x109f]: assigned
+[    1.797793] pci 0000:00:02.0: BAR 0 [io  0x10a0-0x10bf]: assigned
+[    1.798330] pci_bus 0000:00: resource 4 [io  0x0000-0xffff]
+[    1.798404] pci_bus 0000:00: resource 5 [mem 0x10000000-0x3efeffff]
+[    1.798424] pci_bus 0000:00: resource 6 [mem 0x8000000000-0xffffffffff]
+[    1.801824] pci 0000:00:04.0: enabling device (0000 -> 0002)
+[    1.816846] virtio-pci 0000:00:01.0: enabling device (0000 -> 0003)
+[    1.823818] virtio-pci 0000:00:02.0: enabling device (0000 -> 0003)
+[    1.827088] virtio-pci 0000:00:03.0: enabling device (0000 -> 0003)
+[    1.830874] virtio-pci 0000:00:05.0: enabling device (0000 -> 0002)
+[    1.858497] [drm] pci: virtio-gpu-pci detected at 0000:00:05.0
+[    1.859758] [drm] features: -virgl +edid -resource_blob -host_visible
+[    1.859855] [drm] features: -context_init
+[    1.862115] [drm] number of scanouts: 1
+[    1.862173] [drm] number of cap sets: 0
+[    1.881879] [drm] Initialized virtio_gpu 0.1.0 for 0000:00:05.0 on minor 0
+[    1.969229] Console: switching to colour frame buffer device 160x50
+[    1.986235] virtio-pci 0000:00:05.0: [drm] fb0: virtio_gpudrmfb frame buffer device
+[    2.052607] brd: module loaded
+[    2.054103] virtio_blk virtio2: 4/0/0 default/read/poll queues
+[    2.070113] virtio_blk virtio2: [vda] 224214 512-byte logical blocks (115 MB/109 MiB)
+[    2.107665] xhci_hcd 0000:00:04.0: xHCI Host Controller
+[    2.109637] xhci_hcd 0000:00:04.0: new USB bus registered, assigned bus number 1
+[    2.116991] xhci_hcd 0000:00:04.0: hcc params 0x00087001 hci version 0x100 quirks 0x0000000000000010
+[    2.123830] xhci_hcd 0000:00:04.0: xHCI Host Controller
+[    2.124217] xhci_hcd 0000:00:04.0: new USB bus registered, assigned bus number 2
+[    2.125658] xhci_hcd 0000:00:04.0: Host supports USB 3.0 SuperSpeed
+[    2.144624] hub 1-0:1.0: USB hub found
+[    2.145961] hub 1-0:1.0: 4 ports detected
+[    2.154432] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[    2.159319] hub 2-0:1.0: USB hub found
+[    2.160716] hub 2-0:1.0: 4 ports detected
+[    2.180820] rtc-pl031 9010000.pl031: registered as rtc0
+[    2.182133] rtc-pl031 9010000.pl031: setting system clock to 2026-11-18T16:26:34 UTC (1795019194)
+[    2.189251] device-mapper: ioctl: 4.50.0-ioctl (2025-04-28) initialised: dm-devel@lists.linux.dev
+[    2.199891] usbcore: registered new interface driver usbhid
+[    2.200175] usbhid: USB HID core driver
+[    2.208745] hw perfevents: enabled with armv8_pmuv3 PMU driver, 7 (0,8000003f) counters available
+[    2.211645] u32 classifier
+[    2.211690]     input device check on
+[    2.211705]     Actions configured
+[    2.216672] NET: Registered PF_INET6 protocol family
+[    2.237996] Segment Routing with IPv6
+[    2.238408] In-situ OAM (IOAM) with IPv6
+[    2.239725] sit: IPv6, IPv4 and MPLS over IPv4 tunneling driver
+[    2.247464] NET: Registered PF_PACKET protocol family
+[    2.249278] Bridge firewalling registered
+[    2.251519] l2tp_core: L2TP core driver, V2.0
+[    2.251896] Key type dns_resolver registered
+[    2.253553] NET: Registered PF_VSOCK protocol family
+[    2.301932] registered taskstats version 1
+[    2.348993] Key type .fscrypt registered
+[    2.349061] Key type fscrypt-provisioning registered
+[    2.356329] Btrfs loaded, zoned=no, fsverity=no
+[    2.398318] Key type encrypted registered
+[    2.402888] netconsole: network logging started
+[    2.410389] usb 1-1: new high-speed USB device number 2 using xhci_hcd
+[    2.476824] IP-Config: Complete:
+[    2.476880]      device=eth0, hwaddr=52:54:00:12:34:02, ipaddr=192.168.7.2, mask=255.255.255.0, gw=192.168.7.1
+[    2.477009]      host=192.168.7.2, domain=, nis-domain=(none)
+[    2.477041]      bootserver=255.255.255.255, rootserver=255.255.255.255, rootpath=
+[    2.477092]      nameserver0=8.8.8.8
+[    2.482164] clk: Disabling unused clocks
+[    2.482527] PM: genpd: Disabling unused power domains
+[    2.491477] md: Waiting for all devices to be available before autodetect
+[    2.491515] md: If you don't use raid, use raid=noautodetect
+[    2.491564] md: Autodetecting RAID arrays.
+[    2.491600] md: autorun ...
+[    2.491621] md: ... autorun DONE.
+[    2.566409] EXT4-fs (vda): mounted filesystem 45e7959a-425c-41fd-8d1f-1183d942354c r/w with ordered data mode. Quota mode: disabled.
+[    2.567281] VFS: Mounted root (ext4 filesystem) on device 253:0.
+[    2.572617] devtmpfs: mounted
+[    2.589709] input: QEMU QEMU USB Tablet as /devices/platform/4010000000.pcie/pci0000:00/0000:00:04.0/usb1/1-1/1-1:1.0/0003:0627:0001.0001/input/input0
+[    2.592510] hid-generic 0003:0627:0001.0001: input: USB HID v0.01 Mouse [QEMU QEMU USB Tablet] on usb-0000:00:04.0-1/input0
+[    2.712985] Freeing unused kernel memory: 1856K
+[    2.717022] usb 1-2: new high-speed USB device number 3 using xhci_hcd
+[    2.721655] Run /sbin/init as init process
+[    2.721722]   with arguments:
+[    2.721748]     /sbin/init
+[    2.721771]   with environment:
+[    2.721791]     HOME=/
+[    2.721804]     TERM=linux
+[    2.870634] input: QEMU QEMU USB Keyboard as /devices/platform/4010000000.pcie/pci0000:00/0000:00:04.0/usb1/1-2/1-2:1.0/0003:0627:0001.0002/input/input1
+[    2.933793] hid-generic 0003:0627:0001.0002: input: USB HID v1.11 Keyboard [QEMU QEMU USB Keyboard] on usb-0000:00:04.0-2/input0
+[    3.637173] udevd[117]: starting version 3.2.14
+[    3.745257] udevd[118]: starting eudev-3.2.14
+[    4.445897] EXT4-fs (vda): re-mounted 45e7959a-425c-41fd-8d1f-1183d942354c.
+[    4.642384] hello: loading out-of-tree module taints kernel.
+[    4.654795] Hello, world from Div0002
+[    4.726921] scullsingle registered at f900008
+[    4.727011] sculluid registered at f900009
+[    4.727039] scullwuid registered at f90000a
+[    4.727052] scullpriv registered at f90000b
+[  653.973516] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000000
+[  653.973672] Mem abort info:
+[  653.973696]   ESR = 0x0000000096000044
+[  653.973748]   EC = 0x25: DABT (current EL), IL = 32 bits
+[  653.973780]   SET = 0, FnV = 0
+[  653.973802]   EA = 0, S1PTW = 0
+[  653.973827]   FSC = 0x04: level 0 translation fault
+[  653.973861] Data abort info:
+[  653.973886]   ISV = 0, ISS = 0x00000044, ISS2 = 0x00000000
+[  653.973912]   CM = 0, WnR = 1, TnD = 0, TagAccess = 0
+[  653.973938]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
+[  653.974098] user pgtable: 4k pages, 48-bit VAs, pgdp=00000000433b0000
+[  653.974168] [0000000000000000] pgd=0000000000000000, p4d=0000000000000000
+[  653.974600] Internal error: Oops: 0000000096000044 [#1]  SMP
+[  653.978474] Modules linked in: faulty(O) scull(O) hello(O)
+[  653.979624] CPU: 0 UID: 0 PID: 389 Comm: sh Tainted: G           O        6.18.54-yocto-standard #1 PREEMPT 
+[  653.980454] Tainted: [O]=OOT_MODULE
+[  653.980949] Hardware name: linux,dummy-virt (DT)
+[  653.981432] pstate: 80000005 (Nzcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  653.981748] pc : faulty_write+0xc/0x20 [faulty]
+[  653.982775] lr : vfs_write+0xd8/0x398
+[  653.983387] sp : ffff8000825b3d40
+[  653.983566] x29: ffff8000825b3db0 x28: ffff00000366e900 x27: 0000000000000000
+[  653.984364] x26: 0000000000000000 x25: 0000000000000000 x24: 0000000000000000
+[  653.984749] x23: 0000000080000000 x22: ffff8000825b3df0 x21: 0000000000000002
+[  653.985104] x20: 0000aaaab6b12f20 x19: ffff0000026836c0 x18: 0000000000000000
+[  653.985432] x17: 0000000000000000 x16: 0000000000000000 x15: 0000000000000000
+[  653.985756] x14: 0000000000000000 x13: 0000000000000000 x12: 0000000000000000
+[  653.986086] x11: 0000000000000000 x10: 0000000000000000 x9 : ffff80008035b188
+[  653.986500] x8 : 0000000000000000 x7 : 0000000000000000 x6 : 0000000000000001
+[  653.986878] x5 : 0000000000000000 x4 : ffff80007970f068 x3 : ffff8000825b3df0
+[  653.987230] x2 : 0000000000000002 x1 : 0000aaaab6b12f20 x0 : 0000000000000000
+[  653.987752] Call trace:
+[  653.988215]  faulty_write+0xc/0x20 [faulty] (P)
+[  653.988891]  ksys_write+0x6c/0x118
+[  653.989083]  __arm64_sys_write+0x20/0x40
+[  653.989253]  invoke_syscall.constprop.0+0x48/0xf0
+[  653.989464]  el0_svc_common.constprop.0+0x40/0xf0
+[  653.989679]  do_el0_svc+0x24/0x40
+[  653.989827]  el0_svc+0x38/0x118
+[  653.989971]  el0t_64_sync_handler+0xa0/0xe8
+[  653.990151]  el0t_64_sync+0x198/0x1a0
+[  653.990589] Code: ffff8000 aa1e03e9 d503201f d2800000 (b900001f) 
+[  653.991060] ---[ end trace 0000000000000000 ]---
